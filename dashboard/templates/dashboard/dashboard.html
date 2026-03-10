@@ -1,0 +1,66 @@
+<h2>Indicadores</h2>
+
+<p>Total de Produtos: {{ total_produtos }}</p>
+<p>Total de Categorias: {{ total_categorias }}</p>
+<p>Total de Vendas: {{ total_vendas }}</p>
+<p>Faturamento Total: R$ {{ faturamento_total }}</p>
+
+<h2>Vendas Hoje</h2>
+
+<p>Vendas de Hoje: {{ vendas_hoje }}</p>
+<p>Faturamento Hoje: R$ {{ faturamento_hoje }}</p>
+
+<h2>Vendas do Mês</h2>
+
+<p>Vendas do Mês: {{ vendas_mes }}</p>
+<p>Faturamento do Mês: R$ {{ faturamento_mes }}</p>
+
+<h2>Últimas Vendas</h2>
+
+<table>
+<tr>
+    <th>ID</th>
+    <th>Data</th>
+    <th>Total</th>
+</tr>
+
+{% for venda in ultimas_vendas %}
+<tr>
+    <td>{{ venda.id }}</td>
+    <td>{{ venda.created_at }}</td>
+    <td>R$ {{ venda.total }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<h2>Top Produtos Vendidos</h2>
+
+<table>
+<tr>
+    <th>Produto</th>
+    <th>Quantidade Vendida</th>
+</tr>
+
+{% for produto in top_produtos %}
+<tr>
+    <td>{{ produto.product__name }}</td>
+    <td>{{ produto.total_vendido }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<h2>Estoque Baixo</h2>
+
+<table>
+<tr>
+    <th>Produto</th>
+    <th>Estoque</th>
+</tr>
+
+{% for produto in estoque_baixo %}
+<tr>
+    <td>{{ produto.name }}</td>
+    <td>{{ produto.stock }}</td>
+</tr>
+{% endfor %}
+</table>

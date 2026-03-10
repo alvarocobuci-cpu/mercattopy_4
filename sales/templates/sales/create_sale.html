@@ -1,0 +1,30 @@
+<h1>Registrar Venda</h1>
+
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+
+    <label>Produto</label>
+    <select name="product">
+
+        {% for product in products %}
+        <option value="{{ product.id }}">
+            {{ product.name }} - Estoque: {{ product.stock }}
+        </option>
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <label>Quantidade</label>
+    <input type="number" name="quantity">
+
+    <br><br>
+
+    <button type="submit">Finalizar Venda</button>
+
+</form>
